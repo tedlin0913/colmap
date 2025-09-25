@@ -34,6 +34,9 @@ cmake_minimum_required(VERSION 3.12)
 # Options
 ################################################################################
 
+
+
+
 option(SIMD_ENABLED "Whether to enable SIMD optimizations" ON)
 option(OPENMP_ENABLED "Whether to enable OpenMP parallelization" ON)
 option(IPO_ENABLED "Whether to enable interprocedural optimization" ON)
@@ -57,6 +60,11 @@ option(ALL_SOURCE_TARGET "Whether to create a target for all source files (for V
 
 # Disables default features, as we specify each required feature manually below.
 list(APPEND VCPKG_MANIFEST_FEATURES "core")
+
+
+set(CMAKE_CUDA_ARCHITECTURES 70 75 80)
+set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
+set(CUDACXX /usr/local/cuda/bin/nvcc)
 
 # Propagate options to vcpkg manifest.
 if(TESTS_ENABLED)
